@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name">XGN</string>
+
+
+    <string name="title_profile">我的</string>
+    <string name="title_jibu">计步</string>
+    <string name="title_tongji">统计</string>
+
+
+    <string name="feedback">意见反馈</string>
+    <string name="service_support">服务支持</string>
+    <string name="company_profile">公司简介</string>
+
+    <string name="person_detail">个人资料</string>
+    <string name="person_msg">账号信息</string>
+    <string name="edit_shoes">编辑</string>
+    <string name="family_affection">亲情监护</string>
+    <string name="sport_target">运动目标</string>
+    <string name="xgn_shop">小公牛商城</string>
+    <string name="upgrade">固件升级</string>
+    <string name="prevent_loss">手机防丢</string>
+    <string name="my_shop">我的鞋子</string>
+    <string name="history_trail">轨迹回放</string>
+    <string name="about_xgn">关于小公牛</string>
+
+    <string name="target_step">目标步数</string>
+    <string name="target">目标</string>
+    <string name="setting">设置</string>
+    <string name="siger">个人资料</string>
+    <string name="step">步</string>
+    <string name="quantity_of_heat">热量</string>
+    <string name="distance">距离</string>
+    <string name="power">设备电量</string>
+    <string name="record">数据记录</string>
+    <string name="forget_pwd">忘记密码</string>
+
+    <string name="input_phone">请输入手机号码</string>
+    <string name="input_code">请输入验证码</string>
+    <string name="input_pwd">请输入密码</string>
+    <string name="input_new_pwd">请设置您的新密码</string>
+    <string name="input_conform_pwd">请确认您的新密码</string>
+
+</resources>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    >
+
+    <include layout="@layout/custom_toolbar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x60"
+        android:layout_marginRight="@dimen/x60"
+        android:gravity="center_vertical"
+        android:layout_marginTop="@dimen/x60"
+        >
+        <ImageView
+            android:layout_width="@dimen/x40"
+            android:layout_height="@dimen/x40"
+            android:src="@mipmap/icon_phone"
+            android:layout_marginRight="@dimen/x20"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/input_phone"
+            android:textColorHint="@color/view_line"
+            android:inputType="number"
+            android:textSize="15sp"
+            android:background="@null"
+            />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/view_line"
+        android:layout_marginTop="@dimen/x20"
+        android:layout_marginLeft="@dimen/x60"
+        android:layout_marginRight="@dimen/x60"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x60"
+        android:layout_marginRight="@dimen/x60"
+        android:gravity="center_vertical"
+        android:layout_marginTop="@dimen/x40"
+        >
+        <ImageView
+            android:layout_width="@dimen/x40"
+            android:layout_height="@dimen/x40"
+            android:src="@mipmap/ico_captcha"
+            android:layout_marginRight="@dimen/x20"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            >
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/input_code"
+            android:textColorHint="@color/view_line"
+            android:inputType="number"
+            android:textSize="15sp"
+            android:background="@null"
+            android:layout_centerVertical="true"
+            />
+
+        <TextView
+            android:layout_width="@dimen/x150"
+            android:layout_height="@dimen/x50"
+            android:text="获取验证码"
+            android:layout_alignParentRight="true"
+            android:textColor="@android:color/white"
+            android:background="@drawable/border_write"
+            android:padding="@dimen/x6"
+            android:gravity="center"
+            />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/view_line"
+        android:layout_marginTop="@dimen/x20"
+        android:layout_marginLeft="@dimen/x60"
+        android:layout_marginRight="@dimen/x60"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x60"
+        android:layout_marginRight="@dimen/x60"
+        android:gravity="center_vertical"
+        android:layout_marginTop="@dimen/x40"
+        >
+        <ImageView
+            android:layout_width="@dimen/x40"
+            android:layout_height="@dimen/x40"
+            android:src="@mipmap/icon_password"
+            android:layout_marginRight="@dimen/x20"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/input_new_pwd"
+            android:textColorHint="@color/view_line"
+            android:inputType="number"
+            android:textSize="15sp"
+            android:background="@null"
+            />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/view_line"
+        android:layout_marginTop="@dimen/x20"
+        android:layout_marginLeft="@dimen/x60"
+        android:layout_marginRight="@dimen/x60"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x60"
+        android:layout_marginRight="@dimen/x60"
+        android:gravity="center_vertical"
+        android:layout_marginTop="@dimen/x40"
+        >
+        <ImageView
+            android:layout_width="@dimen/x40"
+            android:layout_height="@dimen/x40"
+            android:src="@mipmap/icon_password_confirm"
+            android:layout_marginRight="@dimen/x20"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/input_conform_pwd"
+            android:textColorHint="@color/view_line"
+            android:inputType="number"
+            android:textSize="15sp"
+            android:background="@null"
+            />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/view_line"
+        android:layout_marginTop="@dimen/x20"
+        android:layout_marginLeft="@dimen/x60"
+        android:layout_marginRight="@dimen/x60"
+        />
+
+    <Button
+        android:id="@+id/login_btn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x80"
+        android:layout_marginTop="@dimen/x100"
+        android:layout_marginLeft="@dimen/x60"
+        android:layout_marginRight="@dimen/x60"
+        android:background="@drawable/btn_bg"
+        android:text="提交"
+        android:textColor="@color/colorPrimary"
+        android:textSize="14sp" />
+</LinearLayout>
