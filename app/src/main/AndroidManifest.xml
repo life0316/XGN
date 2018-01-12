@@ -26,6 +26,7 @@
         </activity>
         <activity android:name=".model.LoginActivity" android:screenOrientation="portrait"/>
         <activity android:name=".model.ForgetActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".model.RegistActivity" android:screenOrientation="portrait"/>
         <activity android:name=".MainActivity" android:screenOrientation="portrait"/>
     </application>
 

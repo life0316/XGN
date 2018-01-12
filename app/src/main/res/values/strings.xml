@@ -33,11 +33,14 @@
     <string name="power">设备电量</string>
     <string name="record">数据记录</string>
     <string name="forget_pwd">忘记密码</string>
+    <string name="regist">注册</string>
 
     <string name="input_phone">请输入手机号码</string>
     <string name="input_code">请输入验证码</string>
     <string name="input_pwd">请输入密码</string>
     <string name="input_new_pwd">请设置您的新密码</string>
     <string name="input_conform_pwd">请确认您的新密码</string>
+    <string name="input_regist_pwd">请设置您的密码</string>
+    <string name="input_regist_conform_pwd">请确认您的密码</string>
 
 </resources>
