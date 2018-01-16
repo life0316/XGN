@@ -3,10 +3,11 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <include layout="@layout/custom_toolbar"/>
+
+    <WebView
+        android:id="@+id/webview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/title_jibu"
-        />
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

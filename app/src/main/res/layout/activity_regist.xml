@@ -73,7 +73,7 @@
                 />
 
             <TextView
-                android:layout_width="@dimen/x150"
+                android:layout_width="@dimen/x200"
                 android:layout_height="@dimen/x50"
                 android:text="获取验证码"
                 android:layout_alignParentRight="true"

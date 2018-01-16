@@ -27,6 +27,13 @@
         <activity android:name=".model.LoginActivity" android:screenOrientation="portrait"/>
         <activity android:name=".model.ForgetActivity" android:screenOrientation="portrait"/>
         <activity android:name=".model.RegistActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".model.ProtocolActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".model.AboutActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".model.ComProfileActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".model.SupportActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".model.ProfileDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".model.UpdateActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".model.GoalActivity" android:screenOrientation="portrait"/>
         <activity android:name=".MainActivity" android:screenOrientation="portrait"/>
     </application>
 

@@ -11,11 +11,15 @@ import android.widget.TextView;
 
 import com.haoxi.xgn.R;
 import com.haoxi.xgn.base.BaseLazyFragment;
+import com.haoxi.xgn.widget.WheelView;
+
+import java.util.Arrays;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class StepsFragment extends BaseLazyFragment {
+
 
     // 标志位，标志已经初始化完成。
     private boolean isPrepared;
@@ -29,6 +33,11 @@ public class StepsFragment extends BaseLazyFragment {
         isPrepared = true;
         lazyLoad();
         return view;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
     }
 
     @Override

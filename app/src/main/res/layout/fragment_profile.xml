@@ -25,28 +25,43 @@
             android:layout_height="@dimen/x150"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/x100"
-            android:src="@mipmap/btn_img_photo_default"
+            android:src="@mipmap/icon_avatar_default"
             app:civ_border_color="#000000"
             app:civ_border_width="0dp" />
 
-        <TextView
-            android:id="@+id/profile_name"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/civ_icon"
             android:layout_gravity="center"
+            android:orientation="horizontal"
+            >
+        <TextView
+            android:id="@+id/profile_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="@dimen/x20"
-            android:layout_marginBottom="@dimen/x15"
+            android:layout_marginBottom="@dimen/x20"
             android:text="红布林"
             android:textColor="@android:color/white"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
+            <ImageView
+                android:layout_width="@dimen/x30"
+                android:layout_height="@dimen/x30"
+                android:src="@drawable/edit_selector"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/x20"
+                />
+        </LinearLayout>
     </LinearLayout>
 
         <ImageView
             android:id="@+id/setting"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@mipmap/setting"
+            android:layout_width="@dimen/x40"
+            android:layout_height="@dimen/x40"
+            android:src="@drawable/information_selector"
             android:layout_alignParentRight="true"
             android:layout_margin="10dp"
             />
@@ -57,7 +72,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#ffffffff"
-            android:drawableRight="@mipmap/ic_black"
+            android:drawableRight="@mipmap/icon_next"
             android:gravity="center_vertical"
             android:padding="@dimen/x20"
             android:text="@string/xgn_shop"
@@ -72,7 +87,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#ffffffff"
-            android:drawableRight="@mipmap/ic_black"
+            android:drawableRight="@mipmap/icon_next"
             android:gravity="center_vertical"
             android:padding="@dimen/x20"
             android:text="@string/sport_target"
@@ -87,7 +102,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#ffffffff"
-        android:drawableRight="@mipmap/ic_black"
+        android:drawableRight="@mipmap/icon_next"
         android:gravity="center_vertical"
         android:padding="@dimen/x15"
         android:text="@string/family_affection"
@@ -102,7 +117,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#ffffffff"
-            android:drawableRight="@mipmap/ic_black"
+            android:drawableRight="@mipmap/icon_next"
             android:gravity="center_vertical"
             android:padding="@dimen/x20"
             android:text="低电量通知"
@@ -118,7 +133,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#ffffffff"
-            android:drawableRight="@mipmap/ic_black"
+            android:drawableRight="@mipmap/icon_next"
             android:gravity="center_vertical"
             android:padding="@dimen/x20"
             android:text="@string/prevent_loss"
@@ -129,10 +144,11 @@
         android:background="@color/view_line"/>
 
         <TextView
+            android:id="@+id/profile_shoes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#ffffffff"
-            android:drawableRight="@mipmap/ic_black"
+            android:drawableRight="@mipmap/icon_next"
             android:gravity="center_vertical"
             android:padding="@dimen/x20"
             android:text="@string/my_shop"
@@ -150,7 +166,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#ffffffff"
-            android:drawableRight="@mipmap/ic_black"
+            android:drawableRight="@mipmap/icon_next"
             android:gravity="center_vertical"
             android:padding="@dimen/x20"
             android:text="@string/about_xgn"
@@ -168,7 +184,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#ffffffff"
-        android:drawableRight="@mipmap/ic_black"
+        android:drawableRight="@mipmap/icon_next"
         android:gravity="center_vertical"
         android:padding="@dimen/x20"
         android:text="@string/upgrade"
@@ -177,5 +193,9 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/x6"
         android:background="@color/view_line"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x100"
+            android:background="@android:color/white"/>
     </LinearLayout>
 </ScrollView>

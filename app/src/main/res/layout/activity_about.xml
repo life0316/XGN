@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/custom_toolbar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_civ"
+            android:layout_width="@dimen/x200"
+            android:layout_height="@dimen/x200"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/x100"
+            android:src="@mipmap/icon_avatar_default"
+            app:civ_border_color="#000000"
+            app:civ_border_width="0dp" />
+
+        <TextView
+            android:id="@+id/profile_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/civ_icon"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/x20"
+            android:layout_marginBottom="@dimen/x15"
+            android:text="红布林"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/feedback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffffff"
+        android:drawableRight="@mipmap/ic_black"
+        android:gravity="center_vertical"
+        android:padding="@dimen/x20"
+        android:text="@string/feedback"
+        android:textSize="16dp" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x2"
+        android:background="@color/view_line"/>
+
+    <TextView
+        android:id="@+id/service_support"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffffff"
+        android:drawableRight="@mipmap/ic_black"
+        android:gravity="center_vertical"
+        android:padding="@dimen/x20"
+        android:text="@string/service_support"
+        android:textSize="16dp" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x2"
+        android:background="@color/view_line"/>
+
+    <TextView
+        android:id="@+id/company_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffffff"
+        android:drawableRight="@mipmap/ic_black"
+        android:gravity="center_vertical"
+        android:padding="@dimen/x20"
+        android:text="@string/company_profile"
+        android:textSize="16dp" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x2"
+        android:background="@color/view_line"/>
+</LinearLayout>
