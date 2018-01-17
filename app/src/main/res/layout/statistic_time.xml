@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="@dimen/x180"
+    android:layout_marginLeft="@dimen/x20"
+    android:layout_marginRight="@dimen/x20"
+    android:gravity="center"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="@dimen/x5"
+        >
+
+        <ImageView
+            android:layout_width="@dimen/x100"
+            android:layout_height="@dimen/x15"
+            android:background="@mipmap/right_jiantou"
+            android:layout_marginRight="@dimen/x15"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1月10 - 1月17 日"
+            />
+        <ImageView
+            android:layout_width="@dimen/x100"
+            android:layout_height="@dimen/x15"
+            android:background="@mipmap/left_jiantou"
+            android:layout_marginLeft="@dimen/x15"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/x5"
+        android:padding="@dimen/x10"
+        >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center"
+            >
+
+            <ImageView
+                android:layout_width="@dimen/x70"
+                android:layout_height="@dimen/x70"
+                android:src="@mipmap/icon_run"
+                android:layout_marginRight="@dimen/x20"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20000"
+                android:textSize="25sp"
+                />
+            <TextView
+                android:layout_marginLeft="@dimen/x10"
+                android:layout_marginTop="@dimen/x5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="步"
+                android:textSize="12sp"
+                />
+        </LinearLayout>
+
+        <View
+            android:layout_width="@dimen/x1"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/x5"
+            android:layout_marginBottom="@dimen/x5"
+            android:background="@color/view_line"/>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center"
+            >
+
+            <ImageView
+                android:layout_width="@dimen/x70"
+                android:layout_height="@dimen/x70"
+                android:src="@mipmap/icon_dist"
+                android:layout_marginRight="@dimen/x20"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100.00"
+                android:textSize="25sp"
+                />
+            <TextView
+                android:layout_marginLeft="@dimen/x10"
+                android:layout_marginTop="@dimen/x5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="公里"
+                android:textSize="12sp"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

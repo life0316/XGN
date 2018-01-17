@@ -6,16 +6,39 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.haoxi.xgn.R;
 import com.haoxi.xgn.base.BaseLazyFragment;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class StatisticsFragment extends BaseLazyFragment {
 
     // 标志位，标志已经初始化完成。
     private boolean isPrepared;
+
+    @BindView(R.id.custom_toolbar_tv)
+    TextView titleTv;
+
+    @BindView(R.id.radioGroup)
+    RadioGroup radioGroup;
+    @BindView(R.id.dayRb)
+    RadioButton dayRb;
+    @BindView(R.id.weakRb)
+    RadioButton weakRb;
+    @BindView(R.id.mouthRb)
+    RadioButton mouthRb;
+
+    @BindView(R.id.dayConsumeLl)
+    LinearLayout dayConsumeLl;
+
+    @BindView(R.id.weakMouthLl)
+    LinearLayout weakMouthLl;
 
     @Nullable
     @Override
@@ -26,6 +49,40 @@ public class StatisticsFragment extends BaseLazyFragment {
         isPrepared = true;
         lazyLoad();
         return view;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        titleTv.setText("步数统计");
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
+                switch (checkedId){
+                    case R.id.dayRb:
+                        dayRb.setTextColor(getResources().getColor(android.R.color.white));
+                        weakRb.setTextColor(getResources().getColor(R.color.colorPrimary));
+                        mouthRb.setTextColor(getResources().getColor(R.color.colorPrimary));
+                        dayConsumeLl.setVisibility(View.VISIBLE);
+                        weakMouthLl.setVisibility(View.GONE);
+                        break;
+                    case R.id.weakRb:
+                        weakRb.setTextColor(getResources().getColor(android.R.color.white));
+                        dayRb.setTextColor(getResources().getColor(R.color.colorPrimary));
+                        mouthRb.setTextColor(getResources().getColor(R.color.colorPrimary));
+                        dayConsumeLl.setVisibility(View.GONE);
+                        weakMouthLl.setVisibility(View.VISIBLE);
+                        break;
+                    case R.id.mouthRb:
+                        mouthRb.setTextColor(getResources().getColor(android.R.color.white));
+                        weakRb.setTextColor(getResources().getColor(R.color.colorPrimary));
+                        dayRb.setTextColor(getResources().getColor(R.color.colorPrimary));
+                        dayConsumeLl.setVisibility(View.GONE);
+                        weakMouthLl.setVisibility(View.VISIBLE);
+                        break;
+                }
+            }
+        });
     }
 
     @Override

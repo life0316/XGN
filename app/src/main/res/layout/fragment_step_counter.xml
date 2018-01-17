@@ -3,10 +3,64 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/title_jibu"
+        android:layout_height="0dp"
+        android:layout_weight="6"
+        android:orientation="vertical"
+
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="@dimen/x20"
+            android:background="@color/colorPrimary"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="计步"
+                android:textSize="20sp"
+                android:textColor="@android:color/white"
+                />
+
+            <TextView
+                android:id="@+id/powerPercent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0%"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/x20"
+                android:textColor="@android:color/white"
+                />
+
+            <ImageView
+                android:layout_width="@dimen/x40"
+                android:layout_height="@dimen/x40"
+                android:src="@mipmap/battery_4"
+                android:layout_toLeftOf="@+id/powerPercent"
+                android:layout_marginRight="@dimen/x15"
+                />
+        </RelativeLayout>
+
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3">
+        <include layout="@layout/step_consume"/>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@android:color/white"
         />
 
 </LinearLayout>

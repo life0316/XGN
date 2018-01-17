@@ -8,9 +8,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.SPUtils;
 import com.haoxi.xgn.R;
 import com.haoxi.xgn.base.BaseLazyFragment;
 import com.haoxi.xgn.model.AboutActivity;
@@ -43,7 +45,13 @@ public class ProfileFragment extends BaseLazyFragment implements View.OnClickLis
     @BindView(R.id.setting)
     ImageView mSettingIv;
 
+    @BindView(R.id.powerBtn)
+    ImageButton mPowerBtn;
+    @BindView(R.id.loseBtn)
+    ImageButton mLoseBtn;
 
+    private boolean isOpenLose;
+    private boolean isOpenPower;
 
     @Nullable
     @Override
@@ -66,6 +74,20 @@ public class ProfileFragment extends BaseLazyFragment implements View.OnClickLis
         mUpgradeTv.setOnClickListener(this);
         mSettingIv.setOnClickListener(this);
         mHeaderIv.setOnClickListener(this);
+        mLoseBtn.setOnClickListener(this);
+        mPowerBtn.setOnClickListener(this);
+        isOpenPower = SPUtils.getInstance("XGN").getBoolean("isOpenPower",false);
+        isOpenLose = SPUtils.getInstance("XGN").getBoolean("isOpenLose",false);
+        if (isOpenLose) {
+            mLoseBtn.setImageResource(R.mipmap.icon_open);
+        }else {
+            mLoseBtn.setImageResource(R.mipmap.icon_closed);
+        }
+        if (isOpenPower) {
+            mPowerBtn.setImageResource(R.mipmap.icon_open);
+        }else {
+            mPowerBtn.setImageResource(R.mipmap.icon_closed);
+        }
     }
 
     @Override
@@ -106,6 +128,26 @@ public class ProfileFragment extends BaseLazyFragment implements View.OnClickLis
                 break;
             case R.id.profile_civ:
                 intent = new Intent(getActivity(), ProfileDetailActivity.class);
+                break;
+            case R.id.powerBtn:
+                isOpenPower = SPUtils.getInstance("XGN").getBoolean("isOpenPower",false);
+                if (isOpenPower) {
+                    mPowerBtn.setImageResource(R.mipmap.icon_closed);
+                    SPUtils.getInstance("XGN").put("isOpenPower",false);
+                }else {
+                    mPowerBtn.setImageResource(R.mipmap.icon_open);
+                    SPUtils.getInstance("XGN").put("isOpenPower",true);
+                }
+                break;
+            case R.id.loseBtn:
+                isOpenLose = SPUtils.getInstance("XGN").getBoolean("isOpenLose",false);
+                if (isOpenLose) {
+                    mLoseBtn.setImageResource(R.mipmap.icon_closed);
+                    SPUtils.getInstance("XGN").put("isOpenLose",false);
+                }else {
+                    mLoseBtn.setImageResource(R.mipmap.icon_open);
+                    SPUtils.getInstance("XGN").put("isOpenLose",true);
+                }
                 break;
         }
         if (intent != null) {

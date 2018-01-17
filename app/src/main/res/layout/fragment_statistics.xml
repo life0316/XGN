@@ -3,10 +3,83 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <include layout="@layout/custom_toolbar"/>
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginLeft="@dimen/x120"
+        android:layout_marginRight="@dimen/x120"
+        >
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="日"
+            android:id="@+id/dayRb"
+            style="@style/FlatRadioButtonStyle"
+            android:background="@drawable/flat_round_shape_left" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="周"
+            android:id="@+id/weakRb"
+            android:checked="true"
+            style="@style/FlatRadioButtonStyle"
+            android:textColor="@android:color/white"
+            android:background="@drawable/flat_round_shape_middle" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="月"
+            android:id="@+id/mouthRb"
+            style="@style/FlatRadioButtonStyle"
+            android:background="@drawable/flat_round_shape_right" />
+    </RadioGroup>
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/title_tongji"
-        />
+        android:orientation="vertical"
+        >
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="4"
+                android:background="@color/colorPrimary"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:orientation="vertical"
+            >
+
+            <include layout="@layout/statistic_time" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x1"
+                android:background="@color/view_line"
+                android:layout_marginBottom="@dimen/x10"
+                android:layout_marginTop="@dimen/x10"
+                />
+            <include layout="@layout/layout_consume"/>
+            <include layout="@layout/statistic_board"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@android:color/white"/>
+    </LinearLayout>
 
 </LinearLayout>
