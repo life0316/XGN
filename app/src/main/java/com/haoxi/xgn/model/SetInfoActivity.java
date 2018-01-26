@@ -151,7 +151,7 @@ public class SetInfoActivity extends BaseActivity implements View.OnClickListene
                 showSexDialog(true,HEIGHT_TYPE,"178",highLists,"cm");
                 break;
             case R.id.regist_btn:
-                //registPresenter.getDataFromNets(getParaMap());
+                registPresenter.getDataFromNets(getParaMap());
                 Log.e("regist",getParaMap().toString()+"-----map");
                 break;
         }
