@@ -7,4 +7,5 @@
     <color name="view_line">#e7e6e6</color>
     <color name="transparent">#00000000</color>
     <color name="myyellow">#fbf1d013</color>
+    <color name="colorDark">#f2c375</color>
 </resources>

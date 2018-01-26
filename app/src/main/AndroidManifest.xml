@@ -34,6 +34,7 @@
         <activity android:name=".model.SupportActivity" android:screenOrientation="portrait"/>
         <activity android:name=".model.ProfileDetailActivity" android:screenOrientation="portrait"/>
         <activity android:name=".model.UpdateActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".model.SetInfoActivity" android:screenOrientation="portrait"/>
         <activity android:name=".model.GoalActivity" android:screenOrientation="portrait"/>
         <activity android:name=".MainActivity" android:screenOrientation="portrait"/>
     </application>

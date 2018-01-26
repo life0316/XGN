@@ -26,6 +26,7 @@
     <string name="target_step">目标步数</string>
     <string name="target">目标</string>
     <string name="setting">设置</string>
+    <string name="setting_siger">基本信息</string>
     <string name="siger">个人信息</string>
     <string name="step">步</string>
     <string name="quantity_of_heat">热量</string>
@@ -35,6 +36,7 @@
     <string name="forget_pwd">忘记密码</string>
     <string name="update_pwd">修改密码</string>
     <string name="regist">注册</string>
+    <string name="next">下一步</string>
     <string name="about">关于我们</string>
 
     <string name="input_phone">请输入手机号码</string>
@@ -45,7 +47,9 @@
     <string name="input_new_pwd">请设置您的新密码</string>
     <string name="input_conform_pwd">请确认您的新密码</string>
     <string name="input_regist_pwd">请设置您的密码</string>
+    <string name="input_def_pwd">两次密码不一致</string>
     <string name="input_set_pwd">请确认新密码</string>
     <string name="input_regist_conform_pwd">请确认您的密码</string>
+    <string name="user_phone_valid">请输入正确的手机号</string>
 
 </resources>

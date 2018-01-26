@@ -36,4 +36,16 @@
         <item name="android:padding">5dp</item>
     </style>
 
+    <!-- 加载滚动条样式 -->
+    <style name="loading">
+        <item name="android:indeterminate">true</item>
+        <item name="android:indeterminateDrawable">@drawable/progress_round2</item>
+        <item name="android:indeterminateDuration">2000</item>
+        <item name="android:indeterminateOnly">true</item>
+        <item name="android:windowCloseOnTouchOutside">false</item>
+        <item name="android:maxHeight">@dimen/x40</item>
+        <item name="android:maxWidth">@dimen/x40</item>
+        <item name="android:minWidth">@dimen/x30</item>
+        <item name="android:minHeight">@dimen/x30</item>
+    </style>
 </resources>

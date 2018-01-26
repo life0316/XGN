@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.haoxi.xgn.R;
 import com.haoxi.xgn.base.BaseLazyFragment;
+import com.haoxi.xgn.widget.StepsView;
 import com.haoxi.xgn.widget.WheelView;
 
 import java.util.Arrays;
@@ -25,6 +26,9 @@ public class StepsFragment extends BaseLazyFragment {
 
     // 标志位，标志已经初始化完成。
     private boolean isPrepared;
+
+    @BindView(R.id.tasks_view)
+    StepsView stepsView;
 
 
     @Nullable
@@ -41,7 +45,27 @@ public class StepsFragment extends BaseLazyFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        stepsView.setmTotalProgress(20000);
 
+        new Thread(new ProgressRunable()).start();
+    }
+
+    private int mTotalProgress = 20000;
+    private int mCurrentProgress = 0;
+
+    class ProgressRunable implements Runnable {
+        @Override
+        public void run() {
+            while (mCurrentProgress < mTotalProgress) {
+                mCurrentProgress += 100;
+                stepsView.setProgress(mCurrentProgress);
+                try {
+                    Thread.sleep(30);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
     @Override

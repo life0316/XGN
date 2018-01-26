@@ -22,6 +22,7 @@
             android:layout_marginRight="@dimen/x20"
             />
         <EditText
+            android:id="@+id/phoneEt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/input_phone"
@@ -52,7 +53,7 @@
         <ImageView
             android:layout_width="@dimen/x40"
             android:layout_height="@dimen/x40"
-            android:src="@mipmap/ico_captcha"
+            android:src="@mipmap/yzm"
             android:layout_marginRight="@dimen/x20"
             />
 
@@ -62,6 +63,7 @@
             android:gravity="center_vertical"
             >
         <EditText
+            android:id="@+id/codeEt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/input_code"
@@ -73,7 +75,8 @@
             />
 
         <TextView
-            android:layout_width="@dimen/x150"
+            android:id="@+id/sendCode"
+            android:layout_width="@dimen/x200"
             android:layout_height="@dimen/x50"
             android:text="获取验证码"
             android:layout_alignParentRight="true"
@@ -109,11 +112,12 @@
             android:layout_marginRight="@dimen/x20"
             />
         <EditText
+            android:id="@+id/newpwdEt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/input_new_pwd"
+            android:inputType="textPassword"
             android:textColorHint="@color/view_line"
-            android:inputType="number"
             android:textSize="15sp"
             android:background="@null"
             />
@@ -142,11 +146,12 @@
             android:layout_marginRight="@dimen/x20"
             />
         <EditText
+            android:id="@+id/comNewPwdEt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/input_conform_pwd"
             android:textColorHint="@color/view_line"
-            android:inputType="number"
+            android:inputType="textPassword"
             android:textSize="15sp"
             android:background="@null"
             />
@@ -162,7 +167,7 @@
         />
 
     <Button
-        android:id="@+id/login_btn"
+        android:id="@+id/reset_btn"
         android:layout_width="match_parent"
         android:layout_height="@dimen/x80"
         android:layout_marginTop="@dimen/x100"

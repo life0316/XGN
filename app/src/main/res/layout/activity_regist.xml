@@ -22,6 +22,7 @@
             android:layout_marginRight="@dimen/x20"
             />
         <EditText
+            android:id="@+id/regist_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/input_phone"
@@ -52,7 +53,7 @@
         <ImageView
             android:layout_width="@dimen/x40"
             android:layout_height="@dimen/x40"
-            android:src="@mipmap/ico_captcha"
+            android:src="@mipmap/yzm"
             android:layout_marginRight="@dimen/x20"
             />
 
@@ -62,6 +63,7 @@
             android:gravity="center_vertical"
             >
             <EditText
+                android:id="@+id/regist_code"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/input_code"
@@ -73,6 +75,7 @@
                 />
 
             <TextView
+                android:id="@+id/regist_sendcode"
                 android:layout_width="@dimen/x200"
                 android:layout_height="@dimen/x50"
                 android:text="获取验证码"
@@ -109,11 +112,12 @@
             android:layout_marginRight="@dimen/x20"
             />
         <EditText
+            android:id="@+id/regist_pwd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/input_regist_pwd"
             android:textColorHint="@color/view_line"
-            android:inputType="number"
+            android:inputType="textPassword"
             android:textSize="15sp"
             android:background="@null"
             />
@@ -142,11 +146,12 @@
             android:layout_marginRight="@dimen/x20"
             />
         <EditText
+            android:id="@+id/regist_compwd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/input_regist_conform_pwd"
             android:textColorHint="@color/view_line"
-            android:inputType="number"
+            android:inputType="textPassword"
             android:textSize="15sp"
             android:background="@null"
             />
@@ -162,41 +167,16 @@
         />
 
     <Button
-        android:id="@+id/regist_btn"
+        android:id="@+id/next_btn"
         android:layout_width="match_parent"
         android:layout_height="@dimen/x80"
         android:layout_marginTop="@dimen/x100"
         android:layout_marginLeft="@dimen/x60"
         android:layout_marginRight="@dimen/x60"
         android:background="@drawable/btn_bg"
-        android:text="@string/regist"
+        android:text="@string/next"
         android:textColor="@color/colorPrimary"
         android:textSize="14sp" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="@dimen/x30"
-        android:layout_marginLeft="@dimen/x60"
-        android:layout_marginRight="@dimen/x60"
-        >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="注册完成即表示同意"
-            android:textColor="@android:color/white"
-            android:textSize="12sp"
-            />
-        <TextView
-            android:id="@+id/protocol"
-            android:layout_marginLeft="@dimen/x20"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="《小公牛用户协议》"
-            android:textColor="@android:color/white"
-            />
-    </LinearLayout>
 
 </LinearLayout>

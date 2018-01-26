@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    >
+
+    <include layout="@layout/custom_toolbar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:paddingLeft="@dimen/x40"
+        android:paddingRight="@dimen/x40"
+        >
+
+        <RelativeLayout
+            android:id="@+id/nicknameRl"
+            android:paddingTop="@dimen/x20"
+            android:paddingBottom="@dimen/x20"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="昵称"
+                android:id="@+id/textView" />
+            <TextView
+                android:id="@+id/nicknameTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="13761510350"
+                android:layout_alignParentRight="true"
+                android:drawableRight="@mipmap/icon_next"
+                />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x1"
+            android:background="@android:color/white"/>
+
+        <RelativeLayout
+            android:id="@+id/sexRl"
+            android:paddingTop="@dimen/x20"
+            android:paddingBottom="@dimen/x20"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="性别"
+                />
+            <TextView
+                android:id="@+id/sexTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="男"
+                android:layout_alignParentRight="true"
+                android:drawableRight="@mipmap/icon_next"
+                />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x1"
+            android:background="@android:color/white"/>
+
+        <RelativeLayout
+            android:id="@+id/ageRl"
+            android:paddingTop="@dimen/x20"
+            android:paddingBottom="@dimen/x20"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="出生日期"
+                />
+            <TextView
+                android:id="@+id/ageTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2018-01-24"
+                android:layout_alignParentRight="true"
+                android:drawableRight="@mipmap/icon_next"
+                />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x1"
+            android:background="@android:color/white"
+            />
+
+        <RelativeLayout
+            android:id="@+id/highRl"
+            android:paddingTop="@dimen/x20"
+            android:paddingBottom="@dimen/x20"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="身高"
+                />
+            <TextView
+                android:id="@+id/higtTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="170"
+                android:layout_marginRight="@dimen/x5"
+                android:layout_toLeftOf="@+id/highDanwei"
+                />
+            <TextView
+                android:id="@+id/highDanwei"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="cm"
+                android:layout_alignParentRight="true"
+                android:drawableRight="@mipmap/icon_next"
+                />
+        </RelativeLayout>
+
+        <View
+            android:layout_marginTop="@dimen/x5"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x1"
+            android:background="@android:color/white"/>
+
+
+        <RelativeLayout
+            android:id="@+id/weightRl"
+            android:paddingTop="@dimen/x20"
+            android:paddingBottom="@dimen/x20"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="体重"
+                />
+            <TextView
+                android:id="@+id/weightTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="63"
+                android:layout_marginRight="@dimen/x5"
+                android:layout_toLeftOf="@+id/weightDanwei"
+                />
+            <TextView
+                android:id="@+id/weightDanwei"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="公斤"
+                android:layout_alignParentRight="true"
+                android:drawableRight="@mipmap/icon_next"
+                />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x1"
+            android:background="@android:color/white"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/regist_btn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x80"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="@dimen/x60"
+        android:layout_marginRight="@dimen/x60"
+        android:background="@drawable/btn_bg"
+        android:text="@string/regist"
+        android:textColor="@color/colorPrimary"
+        android:textSize="14sp"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentStart="true" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/x30"
+        android:layout_marginLeft="@dimen/x60"
+        android:layout_marginRight="@dimen/x60"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="注册完成即表示同意"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            />
+        <TextView
+            android:id="@+id/protocol"
+            android:layout_marginLeft="@dimen/x20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="《小公牛用户协议》"
+            android:textColor="@android:color/white"
+            />
+    </LinearLayout>
+
+</LinearLayout>
