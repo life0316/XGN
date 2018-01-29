@@ -1,9 +1,11 @@
 package com.haoxi.xgn.net;
 
 import com.alibaba.fastjson.JSON;
+import com.haoxi.xgn.bean.DeviceBean;
 import com.haoxi.xgn.bean.EaseBean;
 import com.haoxi.xgn.bean.EaseDataBean;
 import com.haoxi.xgn.bean.OurUser;
+import com.haoxi.xgn.bean.OutDeviceBean;
 import com.haoxi.xgn.bean.RegistBean;
 
 import org.json.JSONObject;
@@ -62,7 +64,7 @@ public interface INetService {
     //3.8.获取定位鞋
     @POST("shoes/")
     @FormUrlEncoded
-    Observable<JSONObject> getShoesInfo(@FieldMap Map<String,String> map);
+    Observable<OutDeviceBean> getShoesInfo(@FieldMap Map<String,String> map);
 
     //3.9.修改定位鞋信息
     @POST("shoes/")

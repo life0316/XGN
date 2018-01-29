@@ -55,7 +55,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
         }
         setContentView(mContentViewId);
         ButterKnife.bind(this);
-        init();
+
         if (mMenuId != -1) {
             initToolbar();
         }
@@ -66,6 +66,9 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
         mDialog.setCancelable(false);//设置对话框不能消失
         View view = getLayoutInflater().inflate(R.layout.progressdialog, null);
         mDialog.setContentView(view, new LinearLayoutCompat.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+
+
+        init();
 
     }
 

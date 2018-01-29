@@ -101,6 +101,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         SPUtils.getInstance().put(ContentKey.USER_OBJ_ID,infoData.getUserid());
         SPUtils.getInstance().put(ContentKey.USER_TOKEN,infoData.getToken());
 
+        Log.e("LoginActivity",infoData.getUserid());
+        Log.e("LoginActivity",infoData.getToken());
+
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 

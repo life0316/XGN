@@ -49,4 +49,14 @@ public class MethodConstant {
      */
     public static final String LOGIN_OUT = "/app/user/logout";
 
+    /**
+     * 3.9添加定位鞋
+     */
+    public static final String SHOES_ADD = "/app/device/add";
+
+    /**
+     * 3.10获取定位鞋信息
+     */
+    public static final String SHOES_INFO = "/app/device/get";
+
 }

@@ -20,4 +20,11 @@ public class MethodParams {
     public static String PARAMS_WEIGHT = "weight";
     public static String PARAMS_HEIGHT = "height";
 
+
+    public static String PARAMS_DEVICE_ID= "deviceid";
+    public static String PARAMS_DEVICE_NAME = "devicename";
+    public static String PARAMS_BTMAC = "btmac";
+    public static String PARAMS_SUBMIT = "submit";
+    public static String PARAMS_STATUS = "status";
+
 }

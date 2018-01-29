@@ -16,6 +16,7 @@ import com.blankj.utilcode.util.SPUtils;
 import com.haoxi.xgn.R;
 import com.haoxi.xgn.base.BaseLazyFragment;
 import com.haoxi.xgn.model.AboutActivity;
+import com.haoxi.xgn.model.BandShoesActivity;
 import com.haoxi.xgn.model.GoalActivity;
 import com.haoxi.xgn.model.MyShoesActivity;
 import com.haoxi.xgn.model.ProfileDetailActivity;
@@ -116,7 +117,7 @@ public class ProfileFragment extends BaseLazyFragment implements View.OnClickLis
                 intent = new Intent(getActivity(), GoalActivity.class);
                 break;
             case R.id.profile_shoes:
-                intent = new Intent(getActivity(), MyShoesActivity.class);
+                intent = new Intent(getActivity(), BandShoesActivity.class);
                 break;
             case R.id.about_xgn:
                 intent = new Intent(getActivity(), AboutActivity.class);

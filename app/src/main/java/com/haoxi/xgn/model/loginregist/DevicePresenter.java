@@ -4,15 +4,20 @@ import android.util.Log;
 
 import com.haoxi.xgn.base.BasePresenter;
 import com.haoxi.xgn.base.BaseSubscriber;
+import com.haoxi.xgn.bean.DeviceBean;
 import com.haoxi.xgn.bean.EaseBean;
+import com.haoxi.xgn.bean.OutDeviceBean;
+
 import java.util.Map;
-//
+
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action0;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
-public class EasePresenter extends BasePresenter<IEaseView,EaseBean> {
+//
+
+public class DevicePresenter extends BasePresenter<IDeviceView,OutDeviceBean> {
 
     private static final String TAG = "EasePresenter";
 
@@ -20,35 +25,35 @@ public class EasePresenter extends BasePresenter<IEaseView,EaseBean> {
         checkViewAttached();
         Log.e("LoginActivity",map+"-------map");
 
-        netService.getRequestVerCode(map)
+        netService.getShoesInfo(map)
                 .subscribeOn(Schedulers.newThread())
                 .unsubscribeOn(Schedulers.newThread())
                 .doOnSubscribe(new Action0() {
                     @Override
                     public void call() {
-                        EasePresenter.this.beforeRequest();
+                        DevicePresenter.this.beforeRequest();
                     }
                 })
                 .observeOn(AndroidSchedulers.mainThread())
-                .filter(new Func1<EaseBean, Boolean>() {
+                .filter(new Func1<OutDeviceBean, Boolean>() {
                     @Override
-                    public Boolean call(EaseBean user) {
+                    public Boolean call(OutDeviceBean user) {
                         int codes = user.getCode();
                         Log.e("LoginActivity",codes+"-------"+user.getMsg());
                         if (codes != 200){
-                            EasePresenter.this.requestError(user.getMsg());
+                            DevicePresenter.this.requestError(user.getMsg());
                         }
                         return 200 == user.getCode();
                     }
-                }).subscribe(new BaseSubscriber<>(EasePresenter.this));
+                }).subscribe(new BaseSubscriber<>(DevicePresenter.this));
     }
 
     @Override
-    public void requestSuccess(EaseBean data) {
+    public void requestSuccess(OutDeviceBean data) {
         super.requestSuccess(data);
         if (isViewAttached()) {
             getMvpView().hideProgress();
-            getMvpView().todo();
+            getMvpView().getSuccess(data.getData());
         }
     }
 
@@ -56,7 +61,7 @@ public class EasePresenter extends BasePresenter<IEaseView,EaseBean> {
     public void requestError(String msg) {
         super.requestError("600");
         if (!"".equals(msg)){
-            getMvpView().failture(msg);
+            getMvpView().getFailture(msg);
         }
     }
 }
