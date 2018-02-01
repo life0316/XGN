@@ -7,16 +7,14 @@ import android.widget.TextView;
 import com.blankj.utilcode.util.SPUtils;
 import com.haoxi.xgn.R;
 import com.haoxi.xgn.base.BaseActivity;
-import com.haoxi.xgn.model.loginregist.EasePresenter;
-import com.haoxi.xgn.model.loginregist.IEaseView;
+import com.haoxi.xgn.model.mvp.EasePresenter;
+import com.haoxi.xgn.model.mvp.IEaseView;
 import com.haoxi.xgn.net.MethodConstant;
 import com.haoxi.xgn.net.MethodParams;
 import com.haoxi.xgn.net.MethodType;
 import com.haoxi.xgn.utils.ActivityFragmentInject;
 import com.haoxi.xgn.utils.ApiUtils;
 import com.haoxi.xgn.utils.ContentKey;
-
-import org.w3c.dom.ProcessingInstruction;
 
 import java.util.Map;
 

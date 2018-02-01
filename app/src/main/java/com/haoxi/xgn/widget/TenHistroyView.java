@@ -27,7 +27,7 @@ public class TenHistroyView extends View {
 
     private int mTimeTextSize;
 
-    private int total = 1000;
+    private int total = 20000;
     private List<HistoryBean> eachList = new ArrayList<>();
 
     private Rect mBound;
@@ -64,7 +64,7 @@ public class TenHistroyView extends View {
             mTimeTextColor = a.getColor(R.styleable.TenHistoryView_titleTextColor,Color.RED);
             mBgColor = a.getColor(R.styleable.TenHistoryView_bgColor,Color.GRAY);
             mTimeTextSize = a.getDimensionPixelSize(R.styleable.TenHistoryView_titleTextSize,(int) TypedValue.applyDimension(
-                            TypedValue.COMPLEX_UNIT_SP, 12, getResources().getDisplayMetrics()));
+                            TypedValue.COMPLEX_UNIT_SP, 11, getResources().getDisplayMetrics()));
             a.recycle();
         }
 
@@ -89,7 +89,7 @@ public class TenHistroyView extends View {
         int mWidth = getMeasuredWidth();
         int mHeight = getMeasuredHeight();
 
-        int jgWidth = mWidth * 1/16;
+        int jgWidth = mWidth * 1/11;
         int jgHeight = 20;
         int earchWidth = jgWidth *1/2;
         int earchHeight = mHeight - 4 *jgHeight;
@@ -97,9 +97,13 @@ public class TenHistroyView extends View {
         mPaint.setColor(mBgColor);
         mCirclePaint.setColor(mBgColor);
         mRadius = jgWidth * 1/4;
-        for (int i=0;i<eachList.size();i++){
-            canvas.drawRect(jgWidth + (jgWidth + earchWidth) * i, jgHeight, (earchWidth + jgWidth) * (i+1), mHeight - 3 *jgHeight, mPaint);
 
+        for (int i = 0; i < 7; i++) {
+            canvas.drawRect(jgWidth + (jgWidth + earchWidth) * i, jgHeight, (earchWidth + jgWidth) * (i+1), mHeight - 3 *jgHeight, mPaint);
+        }
+
+        for (int i=0;i<7;i++){
+//            canvas.drawRect(jgWidth + (jgWidth + earchWidth) * i, jgHeight, (earchWidth + jgWidth) * (i+1), mHeight - 3 *jgHeight, mPaint);
             int xCenter = (earchWidth + jgWidth) * (i+1) - earchWidth * 1/2;
             int yCenter = jgHeight;
 
@@ -116,13 +120,15 @@ public class TenHistroyView extends View {
             int height = (int) ((float)fasdfas/total * earchHeight);
 
             canvas.drawRect(jgWidth + (jgWidth + earchWidth) * i, mHeight - 3 *jgHeight - height, (earchWidth + jgWidth) * (i+1), mHeight - 3 *jgHeight, mPaint);
-            canvas.drawText(time, jgWidth + (jgWidth + earchWidth) * i - earchWidth / 2, mHeight - jgHeight - mBound.height() / 2, mPaint);
+            canvas.drawText(time, jgWidth + (jgWidth + earchWidth) * i - earchWidth, mHeight - jgHeight - mBound.height() / 2, mPaint);
 
             int xCenter = (earchWidth + jgWidth) * (i+1) - earchWidth * 1/2;
             int yCenter = mHeight - 3 *jgHeight - height - earchWidth * 1/8;
 
             //内圆
-            canvas.drawCircle(xCenter, yCenter, mRadius, mCirclePaint);
+            if (fasdfas != 0){
+                canvas.drawCircle(xCenter, yCenter, mRadius, mCirclePaint);
+            }
         }
     }
 

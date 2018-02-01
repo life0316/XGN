@@ -1,4 +1,4 @@
-package com.haoxi.xgn.model.loginregist;
+package com.haoxi.xgn.model.mvp;
 
 import com.haoxi.xgn.base.BaseView;
 import com.haoxi.xgn.bean.DeviceBean;

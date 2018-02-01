@@ -20,7 +20,7 @@
             android:layout_width="@dimen/x80"
             android:layout_height="@dimen/x80"
             android:background="@mipmap/bg_ellipse"
-            android:text="本周"
+            android:text="七天"
             android:textSize="14sp"
             android:layout_marginRight="@dimen/x40"
             android:gravity="center"
@@ -33,12 +33,14 @@
             android:gravity="center"
             >
             <TextView
+                android:id="@+id/aveStep"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="日均步数为0步"
                 android:gravity="center"
                 />
             <TextView
+                android:id="@+id/aveKm"
                 android:layout_marginTop="@dimen/x20"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

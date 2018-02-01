@@ -87,4 +87,5 @@ dependencies {
 
     compile 'com.google.dagger:dagger:2.6'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.6'
+    compile 'com.google.zxing:core:3.2.1'
 }

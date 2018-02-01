@@ -7,6 +7,8 @@ import com.haoxi.xgn.bean.EaseDataBean;
 import com.haoxi.xgn.bean.OurUser;
 import com.haoxi.xgn.bean.OutDeviceBean;
 import com.haoxi.xgn.bean.RegistBean;
+import com.haoxi.xgn.bean.UpdateBean;
+import com.haoxi.xgn.bean.WeekBean;
 
 import org.json.JSONObject;
 
@@ -84,10 +86,16 @@ public interface INetService {
     //3.12.获取当前最新版本
     @POST("shoes/")
     @FormUrlEncoded
-    Observable<JSONObject> getAppVersion(@FieldMap Map<String,String> map);
+    Observable<UpdateBean> getAppVersion(@FieldMap Map<String,String> map);
 
     //3.13.获取当前固件最新版本
     @POST("shoes/")
     @FormUrlEncoded
     Observable<JSONObject> getFirmwareVersion(@FieldMap Map<String,String> map);
+
+    //3.13.获取最近一周定位数据
+    @POST("shoes/")
+    @FormUrlEncoded
+    Observable<WeekBean> getWeekData(@FieldMap Map<String,String> map);
+
 }

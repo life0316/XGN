@@ -6,14 +6,17 @@
     <include layout="@layout/custom_toolbar"/>
 
     <LinearLayout
+        android:id="@+id/addShoesLl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:orientation="vertical"
+        android:gravity="center"
+
         >
         <ImageView
-            android:layout_width="@dimen/x300"
-            android:layout_height="@dimen/x300"
+            android:layout_width="@dimen/x250"
+            android:layout_height="@dimen/x250"
             android:layout_centerHorizontal="true"
             android:src="@mipmap/icon_shoe_big"
             />
@@ -22,10 +25,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="你好像还没添加鞋子哦"
-            android:textSize="20sp"
+            android:textSize="16sp"
             />
-
-
+        <TextView
+            android:layout_marginTop="@dimen/x10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="扫描二维码进行添加"
+            android:textSize="14sp"
+            />
         <Button
             android:id="@+id/addshoes_btn"
             android:layout_width="match_parent"
@@ -35,7 +43,8 @@
             android:text="点击添加鞋子"
             android:textColor="@android:color/white"
             android:textSize="14sp" />
-
     </LinearLayout>
+
+    <include layout="@layout/layout_shoes"/>
 
 </LinearLayout>

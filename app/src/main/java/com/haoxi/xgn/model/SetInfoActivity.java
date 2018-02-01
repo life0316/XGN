@@ -20,11 +20,10 @@ import com.haoxi.xgn.MainActivity;
 import com.haoxi.xgn.R;
 import com.haoxi.xgn.base.BaseActivity;
 import com.haoxi.xgn.bean.RegistBean;
-import com.haoxi.xgn.model.loginregist.IRegistView;
-import com.haoxi.xgn.model.loginregist.RegistPresenter;
+import com.haoxi.xgn.model.mvp.IRegistView;
+import com.haoxi.xgn.model.mvp.RegistPresenter;
 import com.haoxi.xgn.net.MethodConstant;
 import com.haoxi.xgn.net.MethodParams;
-import com.haoxi.xgn.net.MethodType;
 import com.haoxi.xgn.utils.ActivityFragmentInject;
 import com.haoxi.xgn.utils.ApiUtils;
 import com.haoxi.xgn.utils.ContentKey;
@@ -395,6 +394,7 @@ public class SetInfoActivity extends BaseActivity implements View.OnClickListene
         SPUtils.getInstance().put(ContentKey.USER_TOKEN,registBean.getData().getToken());
         Intent intent = new Intent(SetInfoActivity.this,MainActivity.class);
         startActivity(intent);
+        this.finish();
     }
 
     @Override

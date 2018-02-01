@@ -1,11 +1,21 @@
 package com.haoxi.xgn.base;
 
 import android.app.Dialog;
+import android.bluetooth.BluetoothAdapter;
+import android.content.BroadcastReceiver;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,9 +28,15 @@ import com.blankj.utilcode.util.EncryptUtils;
 import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.Utils;
 import com.haoxi.xgn.R;
+import com.haoxi.xgn.model.BandShoesActivity;
+import com.haoxi.xgn.model.MyShoesActivity;
 import com.haoxi.xgn.net.MethodParams;
+import com.haoxi.xgn.openBle.BluetoothLeService;
+import com.haoxi.xgn.openBle.utils.MPermissionsActivity;
+import com.haoxi.xgn.openBle.utils.SampleGattAttributes;
 import com.haoxi.xgn.utils.ActivityFragmentInject;
 import com.haoxi.xgn.utils.ApiUtils;
+import com.haoxi.xgn.utils.BeepManager;
 import com.haoxi.xgn.utils.ContentKey;
 
 import java.util.HashMap;
@@ -28,19 +44,23 @@ import java.util.Map;
 
 import butterknife.ButterKnife;
 
-public abstract class BaseActivity extends AppCompatActivity implements BaseView{
+public abstract class BaseActivity extends MPermissionsActivity implements BaseView{
 
     public static final String APP_SECRET = "99fcf7399865105573df904f72888f19";
 
     protected String mToken        = "";
-    protected String mUserObjId    = "";;
+    protected String mUserObjId    = "";
     private int mToolbarTitle;
     private int mToolbarIndicator;
     protected Dialog mDialog;
+    protected boolean tsPhone = true;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //将Activity实例添加到AppManager的堆栈
+        AppManager.getAppManager().addActivity(this);
 
         int mContentViewId;
         int mMenuId;
@@ -67,10 +87,37 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
         View view = getLayoutInflater().inflate(R.layout.progressdialog, null);
         mDialog.setContentView(view, new LinearLayoutCompat.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
-
+        initBLE();
+        registerReceiver(broadcastReceiver, SampleGattAttributes.makeGattUpdateIntentFilter());
         init();
 
     }
+
+    private void initBLE() {
+        boolean bindService = bindService(new Intent(this, BluetoothLeService.class), connection, Context.BIND_AUTO_CREATE);
+        if (bindService) {
+            Log.w(BandShoesActivity.class.getSimpleName(), "蓝牙初始化成功");
+        }
+    }
+
+    private ServiceConnection connection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            BluetoothLeService bluetoothLeService = ((BluetoothLeService.LocalBinder) service).getService();
+            if (bluetoothLeService.initBluetooth()) {
+                XgnApp.getInstance().setBluetoothLeService(bluetoothLeService);
+                BluetoothAdapter bluetoothAdapter = bluetoothLeService.getmBluetoothAdapter();
+                if (bluetoothAdapter!=null&&!bluetoothAdapter.isEnabled()){
+                    Intent enableBT = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                    startActivityForResult(enableBT, 1);
+                }
+            }
+        }
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            XgnApp.getInstance().setBluetoothLeService(null);
+        }
+    };
 
     private void initToolbar() {
         Toolbar mToolbar = findViewById(R.id.toolbar);
@@ -167,5 +214,77 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
         if (mDialog != null) {
             mDialog.dismiss();
         }
+    }
+
+    /**
+     * BLE通讯广播
+     */
+    private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            switch (action) {
+                case SampleGattAttributes.ACTION_GATT_CONNECTED:
+                    //链接
+                    btConnect();
+                    SPUtils.getInstance().put(ContentKey.BT_CONNECT,true);
+                    break;
+                case SampleGattAttributes.ACTION_GATT_DISCONNECTED:
+                    //断开
+                    btDisconnect();
+                    SPUtils.getInstance().put(ContentKey.BT_CONNECT,false);
+                    showDialog();
+                    break;
+                case SampleGattAttributes.ACTION_GATT_SERVICES_DISCOVERED:
+                    //发现服务
+//                    handler.sendEmptyMessageDelayed(0, 2000);
+                    break;
+                case SampleGattAttributes.ACTION_BLE_REAL_DATA:
+//                    parseData(intent.getStringExtra("data"));
+                    break;
+                case BluetoothAdapter.ACTION_STATE_CHANGED:
+                    Log.e(MyShoesActivity.class.getSimpleName(),"state_changed");
+                    break;
+            }
+        }
+    };
+
+    protected void btDisconnect() {
+    }
+
+    protected void btConnect() {
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //将Activity实例从AppManager的堆栈中移除
+        AppManager.getAppManager().finishActivity(this);
+        unregisterReceiver(broadcastReceiver);
+        if (connection!=null){
+            unbindService(connection);
+            connection = null;
+        }
+    }
+
+    private void showDialog() {
+
+        if (SPUtils.getInstance().getBoolean(ContentKey.SHOW_DIALOG,false)){
+            return;
+        }
+
+        Log.e("builerd",AppManager.getAppManager().currentActivity().getLocalClassName()+"---------activity");
+        final AlertDialog.Builder builder = new AlertDialog.Builder( AppManager.getAppManager().currentActivity());
+        builder.setMessage("鞋子连接断开，请注意！");
+        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                BeepManager.cancle();
+                SPUtils.getInstance().put(ContentKey.SHOW_DIALOG,false);
+                dialogInterface.dismiss();
+            }
+        });
+        SPUtils.getInstance().put(ContentKey.SHOW_DIALOG,true);
+        builder.show();
     }
 }

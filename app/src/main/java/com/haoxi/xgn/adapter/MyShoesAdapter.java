@@ -1,5 +1,6 @@
 package com.haoxi.xgn.adapter;
 
+import android.bluetooth.BluetoothDevice;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 
 import com.haoxi.xgn.R;
 import com.haoxi.xgn.bean.DeviceBean;
+import com.haoxi.xgn.openBle.BleDevice;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,11 +18,17 @@ import java.util.List;
 
 public class MyShoesAdapter extends RecyclerView.Adapter<MyShoesAdapter.ShoesHolder> implements View.OnClickListener {
 
-    private List<DeviceBean> deviceBeen = new ArrayList<>();
+    private List<BleDevice> deviceBeen = new ArrayList<>();
     private RecyclerViewOnItemClickListener onItemClickListener;
 
-    public MyShoesAdapter(List<DeviceBean> deviceBeen) {
-        this.deviceBeen = deviceBeen;
+    public MyShoesAdapter() {
+
+    }
+
+    public void addBleDevice(BleDevice bleDevice){
+        deviceBeen.add(bleDevice);
+
+        notifyDataSetChanged();
     }
 
     @Override
@@ -35,11 +43,17 @@ public class MyShoesAdapter extends RecyclerView.Adapter<MyShoesAdapter.ShoesHol
     @Override
     public void onBindViewHolder(ShoesHolder shoesHolder, int position) {
 
-        DeviceBean deviceBean = deviceBeen.get(position);
+        BluetoothDevice bluetoothDevice = deviceBeen.get(position).getDevice();
         shoesHolder.rootView.setTag(position);
 
-        shoesHolder.deviceIdTv.setText(deviceBean.getDeviceid());
-        shoesHolder.btmacTv.setText(deviceBean.getBtmac());
+        if (bluetoothDevice.getName() == null){
+            shoesHolder.deviceIdTv.setText("无");
+        }else {
+            shoesHolder.deviceIdTv.setText(bluetoothDevice.getName());
+        }
+
+        Log.e("fafsf",bluetoothDevice.getAddress()+"-------4");
+        shoesHolder.btmacTv.setText(bluetoothDevice.getAddress());
     }
 
     @Override
@@ -53,7 +67,6 @@ public class MyShoesAdapter extends RecyclerView.Adapter<MyShoesAdapter.ShoesHol
         if (onItemClickListener != null) {
             onItemClickListener.onItemClickListener(view,(int)view.getTag(),deviceBeen.get((int)view.getTag()));
         }
-
     }
 
     //设置点击事件
@@ -64,7 +77,7 @@ public class MyShoesAdapter extends RecyclerView.Adapter<MyShoesAdapter.ShoesHol
     //接口回调设置点击事件
     public interface RecyclerViewOnItemClickListener {
         //点击事件
-        void onItemClickListener(View view, int position,DeviceBean deviceBean);
+        void onItemClickListener(View view, int position,BleDevice deviceBean);
     }
 
 

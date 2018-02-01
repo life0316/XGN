@@ -1,4 +1,4 @@
-package com.haoxi.xgn.model.loginregist;
+package com.haoxi.xgn.model.mvp;
 
 import android.util.Log;
 
@@ -6,7 +6,6 @@ import com.haoxi.xgn.base.BaseModel;
 import com.haoxi.xgn.base.BaseSubscriber;
 import com.haoxi.xgn.base.RequestCallback;
 import com.haoxi.xgn.bean.EaseDataBean;
-import com.haoxi.xgn.bean.OurUser;
 
 import java.util.Map;
 import rx.android.schedulers.AndroidSchedulers;

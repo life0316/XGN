@@ -1,14 +1,17 @@
 package com.haoxi.xgn.model;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
 
 import com.haoxi.xgn.R;
 import com.haoxi.xgn.base.BaseActivity;
+import com.haoxi.xgn.update.VersionPresenter;
 import com.haoxi.xgn.utils.ActivityFragmentInject;
-import butterknife.BindView;
+import com.haoxi.xgn.utils.ApiUtils;
 
+import butterknife.BindView;
 
 @ActivityFragmentInject(contentViewId = R.layout.activity_about,menuId = 1,toolbarTitle = R.string.about_xgn)
 public class AboutActivity extends BaseActivity implements View.OnClickListener {
@@ -18,11 +21,12 @@ public class AboutActivity extends BaseActivity implements View.OnClickListener 
     @BindView(R.id.company_profile)
     TextView mProfileTv;
 
-
     @Override
     protected void init() {
         mSupportTv.setOnClickListener(this);
         mProfileTv.setOnClickListener(this);
+        String versionName = ApiUtils.getVersionName(this);
+        mProfileTv.setText(versionName);
     }
 
     @Override

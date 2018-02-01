@@ -6,21 +6,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.blankj.utilcode.util.EncryptUtils;
 import com.blankj.utilcode.util.SPUtils;
 import com.haoxi.xgn.MainActivity;
 import com.haoxi.xgn.R;
 import com.haoxi.xgn.base.BaseActivity;
 import com.haoxi.xgn.bean.EaseDataBean;
 import com.haoxi.xgn.bean.UserInfoData;
-import com.haoxi.xgn.model.loginregist.ILoginView;
-import com.haoxi.xgn.model.loginregist.LoginModel;
-import com.haoxi.xgn.model.loginregist.LoginPresenter;
+import com.haoxi.xgn.model.mvp.ILoginView;
+import com.haoxi.xgn.model.mvp.LoginModel;
+import com.haoxi.xgn.model.mvp.LoginPresenter;
 import com.haoxi.xgn.net.MethodConstant;
 import com.haoxi.xgn.net.MethodParams;
-import com.haoxi.xgn.net.MethodType;
 import com.haoxi.xgn.utils.ActivityFragmentInject;
 import com.haoxi.xgn.utils.ApiUtils;
 import com.haoxi.xgn.utils.ContentKey;
@@ -28,7 +25,6 @@ import com.haoxi.xgn.utils.ContentKey;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
-import java.util.logging.SimpleFormatter;
 
 import butterknife.BindView;
 
@@ -55,6 +51,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
         presenter = new LoginPresenter(new LoginModel());
         presenter.attachView(this);
+        tsPhone = false;
 
         mLoginBtn.setOnClickListener(this);
         mForgetTv.setOnClickListener(this);
@@ -112,6 +109,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
         Intent intent = new Intent(LoginActivity.this,MainActivity.class);
         startActivity(intent);
+        this.finish();
     }
 
     @Override

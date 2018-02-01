@@ -127,11 +127,11 @@ public class StepsView extends View {
         mTxtWidth = mTextPaint.measureText(comTxt, 0, comTxt.length());
         mTextPaint.setColor(Color.GRAY);
         mTextPaint.setTextSize(mRadius / 5);
-        canvas.drawText(comTxt, mXCenter - mTxtWidth * 3/5, mYCenter - mTxtHeight * 1/2, mTextPaint);
+        canvas.drawText(comTxt, mXCenter - mTxtWidth * 3/5, mYCenter - mTxtHeight * 2/3, mTextPaint);
 
 
         mTextPaint.setColor(mRingColor);
-        mTextPaint.setTextSize(mRadius / 3);
+        mTextPaint.setTextSize(mRadius / 4);
 
         //外圆弧
         if (mProgress > 0 ) {
@@ -143,12 +143,16 @@ public class StepsView extends View {
             canvas.drawArc(oval, -240, ((float)mProgress / mTotalProgress) * 300, false, mRingPaint); //
 
             //字体
-            String txt = (int)((float)mProgress / mTotalProgress * 100) + "%";
+//            String txt = (int)((float)mProgress / mTotalProgress * 100) + "%";
+//            mTxtWidth = mTextPaint.measureText(txt, 0, txt.length());
+//            canvas.drawText(txt, mXCenter - mTxtWidth / 2, mYCenter + mTxtHeight, mTextPaint);
+
+            String txt = String.valueOf(mProgress);
             mTxtWidth = mTextPaint.measureText(txt, 0, txt.length());
-            canvas.drawText(txt, mXCenter - mTxtWidth / 2, mYCenter + mTxtHeight, mTextPaint);
+            canvas.drawText(txt, mXCenter - mTxtWidth / 2, mYCenter + mTxtHeight *1/2, mTextPaint);
         }else {
-            mTxtWidth = mTextPaint.measureText("0%", 0, "0%".length());
-            canvas.drawText("0%", mXCenter - mTxtWidth / 2, mYCenter + mTxtHeight, mTextPaint);
+            mTxtWidth = mTextPaint.measureText("0", 0, "0".length());
+            canvas.drawText("0", mXCenter - mTxtWidth / 2, mYCenter + mTxtHeight*1/2, mTextPaint);
         }
 
         //字体

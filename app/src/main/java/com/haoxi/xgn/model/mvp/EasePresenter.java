@@ -1,20 +1,18 @@
-package com.haoxi.xgn.model.loginregist;
+package com.haoxi.xgn.model.mvp;
 
 import android.util.Log;
 
 import com.haoxi.xgn.base.BasePresenter;
 import com.haoxi.xgn.base.BaseSubscriber;
 import com.haoxi.xgn.bean.EaseBean;
-import com.haoxi.xgn.bean.RegistBean;
-
 import java.util.Map;
-
+//
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action0;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
-public class RegistPresenter extends BasePresenter<IRegistView,RegistBean> {
+public class EasePresenter extends BasePresenter<IEaseView,EaseBean> {
 
     private static final String TAG = "EasePresenter";
 
@@ -22,35 +20,35 @@ public class RegistPresenter extends BasePresenter<IRegistView,RegistBean> {
         checkViewAttached();
         Log.e("LoginActivity",map+"-------map");
 
-        netService.getRegister(map)
+        netService.getRequestVerCode(map)
                 .subscribeOn(Schedulers.newThread())
                 .unsubscribeOn(Schedulers.newThread())
                 .doOnSubscribe(new Action0() {
                     @Override
                     public void call() {
-                        RegistPresenter.this.beforeRequest();
+                        EasePresenter.this.beforeRequest();
                     }
                 })
                 .observeOn(AndroidSchedulers.mainThread())
-                .filter(new Func1<RegistBean, Boolean>() {
+                .filter(new Func1<EaseBean, Boolean>() {
                     @Override
-                    public Boolean call(RegistBean user) {
+                    public Boolean call(EaseBean user) {
                         int codes = user.getCode();
                         Log.e("LoginActivity",codes+"-------"+user.getMsg());
                         if (codes != 200){
-                            RegistPresenter.this.requestError(user.getMsg());
+                            EasePresenter.this.requestError(user.getMsg());
                         }
                         return 200 == user.getCode();
                     }
-                }).subscribe(new BaseSubscriber<>(RegistPresenter.this));
+                }).subscribe(new BaseSubscriber<>(EasePresenter.this));
     }
 
     @Override
-    public void requestSuccess(RegistBean data) {
+    public void requestSuccess(EaseBean data) {
         super.requestSuccess(data);
         if (isViewAttached()) {
             getMvpView().hideProgress();
-            getMvpView().registSuccess(data);
+            getMvpView().todo();
         }
     }
 

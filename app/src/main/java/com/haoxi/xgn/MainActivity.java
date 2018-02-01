@@ -6,12 +6,18 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.view.ViewPager;
 import android.view.MenuItem;
 import android.widget.TextView;
+
+import com.blankj.utilcode.util.SPUtils;
 import com.haoxi.xgn.base.BaseActivity;
 import com.haoxi.xgn.base.MyBaseAdapter;
 import com.haoxi.xgn.fragment.ProfileFragment;
 import com.haoxi.xgn.fragment.StatisticsFragment;
+import com.haoxi.xgn.fragment.StatisticsFragment2;
 import com.haoxi.xgn.fragment.StepsFragment;
 import com.haoxi.xgn.utils.ActivityFragmentInject;
+import com.haoxi.xgn.utils.BeepManager;
+import com.haoxi.xgn.utils.ContentKey;
+
 import butterknife.BindView;
 
 @ActivityFragmentInject(contentViewId = R.layout.activity_main)
@@ -51,6 +57,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void init() {
+        SPUtils.getInstance().put(ContentKey.MAIN_PAGE,1);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.navigation_dashboard);
 
@@ -58,15 +65,14 @@ public class MainActivity extends BaseActivity {
         mViewPager.setAdapter(adapter);
         adapter.addFragment(ProfileFragment.class,getBundle(getString(R.string.title_profile)));
         adapter.addFragment(StepsFragment.class,getBundle(getString(R.string.title_jibu)));
-        adapter.addFragment(StatisticsFragment.class,getBundle(getString(R.string.title_tongji)));
-        mViewPager.setCurrentItem(1);
+        adapter.addFragment(StatisticsFragment2.class,getBundle(getString(R.string.title_tongji)));
+//        mViewPager.setCurrentItem(1);
 
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
             }
-
             @Override
             public void onPageSelected(int position) {
                 if (menuItem != null) {
@@ -77,11 +83,30 @@ public class MainActivity extends BaseActivity {
                 menuItem = navigation.getMenu().getItem(position);
                 menuItem.setChecked(true);
             }
-
             @Override
             public void onPageScrollStateChanged(int state) {
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mViewPager.setCurrentItem(SPUtils.getInstance().getInt(ContentKey.MAIN_PAGE,1));
+    }
+
+    @Override
+    protected void btDisconnect() {
+        super.btDisconnect();
+        if (SPUtils.getInstance().getBoolean("isOpenLose",false)){
+            BeepManager.playBeepSoundAndVibrate(this);
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        SPUtils.getInstance().put(ContentKey.MAIN_PAGE,1);
     }
 
     @Override

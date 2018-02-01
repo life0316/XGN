@@ -1,11 +1,9 @@
-package com.haoxi.xgn.model.loginregist;
+package com.haoxi.xgn.model.mvp;
 
 import android.util.Log;
 
 import com.haoxi.xgn.base.BasePresenter;
 import com.haoxi.xgn.base.BaseSubscriber;
-import com.haoxi.xgn.bean.DeviceBean;
-import com.haoxi.xgn.bean.EaseBean;
 import com.haoxi.xgn.bean.OutDeviceBean;
 
 import java.util.Map;
@@ -24,7 +22,6 @@ public class DevicePresenter extends BasePresenter<IDeviceView,OutDeviceBean> {
     public void getDataFromNets(Map<String,String> map){
         checkViewAttached();
         Log.e("LoginActivity",map+"-------map");
-
         netService.getShoesInfo(map)
                 .subscribeOn(Schedulers.newThread())
                 .unsubscribeOn(Schedulers.newThread())

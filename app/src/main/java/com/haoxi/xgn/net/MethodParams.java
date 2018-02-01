@@ -12,6 +12,7 @@ public class MethodParams {
 
     public static String PARAMS_TOKEN = "token";
     public static String PARAMS_USERID = "userid";
+    public static String PARAMS_OS = "os";
 
     public static String PARAMS_NICKNAME = "nickname";
     public static String PARAMS_GENDER = "gender";
@@ -27,4 +28,7 @@ public class MethodParams {
     public static String PARAMS_SUBMIT = "submit";
     public static String PARAMS_STATUS = "status";
 
+    public static String PARAMS_DEVICE_LON= "lon";
+    public static String PARAMS_DEVICE_LAT= "lat";
+    public static String PARAMS_DEVICE_STEPS= "steps";
 }

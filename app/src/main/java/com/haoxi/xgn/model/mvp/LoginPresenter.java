@@ -1,4 +1,4 @@
-package com.haoxi.xgn.model.loginregist;
+package com.haoxi.xgn.model.mvp;
 
 import android.util.Log;
 import com.haoxi.xgn.base.BasePresenter;

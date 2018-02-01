@@ -57,6 +57,35 @@ public class MethodConstant {
     /**
      * 3.10获取定位鞋信息
      */
-    public static final String SHOES_INFO = "/app/device/get";
+    public static final String SHOES_INFO = "/app/device/get_binded";
 
+    /**
+     * 3.11提交定位数据
+     */
+    public static final String RECORD_SUBMIT = "/app/record/submit";
+
+    /**
+     * 3.12获取当前最新版本
+     */
+    public static final String GET_CURRENT_VERSION = "/app/version/get";
+
+    /**
+     * 3.12获取最近一周定位数据
+     */
+    public static final String GET_WEEK_DATA = "/app/record/get_week";
+
+    /**
+     * 3.10绑定设备
+     */
+    public static final String SHOES_BIND = "/app/device/bind";
+
+    /**
+     * 3.10修改定位鞋信息
+     */
+    public static final String SHOES_SET = "/app/device/set";
+
+    /**
+     * 3.10解绑设备
+     */
+    public static final String SHOES_UNBIND = "/app/device/unbind";
 }

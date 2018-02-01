@@ -2,15 +2,13 @@ package com.haoxi.xgn.model;
 
 import android.content.Intent;
 import android.os.Handler;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.haoxi.xgn.MainActivity;
 import com.haoxi.xgn.R;
 import com.haoxi.xgn.base.BaseActivity;
-import com.haoxi.xgn.model.loginregist.EasePresenter;
-import com.haoxi.xgn.model.loginregist.IEaseView;
+import com.haoxi.xgn.model.mvp.EasePresenter;
+import com.haoxi.xgn.model.mvp.IEaseView;
 import com.haoxi.xgn.net.MethodConstant;
 import com.haoxi.xgn.net.MethodParams;
 import com.haoxi.xgn.net.MethodType;

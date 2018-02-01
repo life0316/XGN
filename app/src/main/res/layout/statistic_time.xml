@@ -23,6 +23,7 @@
             />
 
         <TextView
+            android:id="@+id/timeTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1月10 - 1月17 日"
@@ -59,9 +60,10 @@
                 />
 
             <TextView
+                android:id="@+id/totalStep"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="20000"
+                android:text="0"
                 android:textSize="25sp"
                 />
             <TextView
@@ -96,9 +98,10 @@
                 />
 
             <TextView
+                android:id="@+id/totalKm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="100.00"
+                android:text="0.00"
                 android:textSize="25sp"
                 />
             <TextView
@@ -106,7 +109,7 @@
                 android:layout_marginTop="@dimen/x5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="公里"
+                android:text="km"
                 android:textSize="12sp"
                 />
         </LinearLayout>
