@@ -107,6 +107,7 @@ public class StepsView extends View {
     protected void onDraw(Canvas canvas) {
         mXCenter = getWidth() / 2;
         mYCenter = getHeight() / 2;
+        java.text.DecimalFormat   df   =new   java.text.DecimalFormat("#0.00");
 
         //内圆
         mCirclePaint.setColor(mCircleColor);
@@ -135,19 +136,24 @@ public class StepsView extends View {
 
         //外圆弧
         if (mProgress > 0 ) {
-            RectF oval = new RectF();
-            oval.left = (mXCenter - mRingRadius);
-            oval.top = (mYCenter - mRingRadius);
-            oval.right = mRingRadius * 2 + (mXCenter - mRingRadius);
-            oval.bottom = mRingRadius * 2 + (mYCenter - mRingRadius);
-            canvas.drawArc(oval, -240, ((float)mProgress / mTotalProgress) * 300, false, mRingPaint); //
-
+            if (mProgress <= mTotalProgress){
+                RectF oval = new RectF();
+                oval.left = (mXCenter - mRingRadius);
+                oval.top = (mYCenter - mRingRadius);
+                oval.right = mRingRadius * 2 + (mXCenter - mRingRadius);
+                oval.bottom = mRingRadius * 2 + (mYCenter - mRingRadius);
+                canvas.drawArc(oval, -240, ((float)mProgress / mTotalProgress) * 300, false, mRingPaint);
+            }
             //字体
 //            String txt = (int)((float)mProgress / mTotalProgress * 100) + "%";
 //            mTxtWidth = mTextPaint.measureText(txt, 0, txt.length());
 //            canvas.drawText(txt, mXCenter - mTxtWidth / 2, mYCenter + mTxtHeight, mTextPaint);
 
             String txt = String.valueOf(mProgress);
+
+            if (mProgress > 100000){
+                txt = df.format(mProgress * 100 / (100 * 10000));
+            }
             mTxtWidth = mTextPaint.measureText(txt, 0, txt.length());
             canvas.drawText(txt, mXCenter - mTxtWidth / 2, mYCenter + mTxtHeight *1/2, mTextPaint);
         }else {
@@ -157,6 +163,9 @@ public class StepsView extends View {
 
         //字体
         String txt = "目标:" + mTotalProgress;
+        if (mTotalProgress > 100000){
+            txt = df.format(mTotalProgress * 100 / (100 * 10000));
+        }
         mTextPaint.setTextSize(mRadius / 7);
         mTextPaint.setColor(Color.WHITE);
         mTxtWidth = mTextPaint.measureText(txt, 0, txt.length());

@@ -6,6 +6,7 @@ public class ContentKey {
     public static final int PERMISSION_REQUESTCODE_2 = 200;
 
     public static String IS_REGIST = "isRegist";
+    public static String CHANGE_TARGET = "change_target";
 
     public static String PHONE_KEY = "user_phone";
     public static String PWD_KEY = "user_pwd";

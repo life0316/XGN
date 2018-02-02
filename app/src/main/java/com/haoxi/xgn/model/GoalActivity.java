@@ -124,6 +124,7 @@ public class GoalActivity extends BaseActivity implements SeekBar.OnSeekBarChang
     @Override
     public void toGetDetail(EaseDataBean user) {
         SPUtils.getInstance().put(ContentKey.USER_TARGET,updateStep);
+        SPUtils.getInstance().put(ContentKey.CHANGE_TARGET,true);
 //        updateUI(updateStep);
     }
 

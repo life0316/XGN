@@ -96,7 +96,10 @@ public class StepsFragment extends BaseLazyFragment implements IEaseView {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        stepsView.setmTotalProgress(20000);
+        if (SPUtils.getInstance().getInt(ContentKey.USER_TARGET,20000) > 0 ){
+            mTotalProgress = SPUtils.getInstance().getInt(ContentKey.USER_TARGET,20000);
+        }
+        stepsView.setmTotalProgress(mTotalProgress);
         new Thread(new ProgressRunable()).start();
     }
 
@@ -142,10 +145,24 @@ public class StepsFragment extends BaseLazyFragment implements IEaseView {
         SPUtils.getInstance().put(ContentKey.MAIN_PAGE,1);
         //填充各控件的数据
         Log.e("jiazai","预加载----ProfileFragment-------1");
+
+        if (SPUtils.getInstance().getBoolean(ContentKey.CHANGE_TARGET,false)){
+            SPUtils.getInstance().put(ContentKey.CHANGE_TARGET,false);
+            if (SPUtils.getInstance().getInt(ContentKey.USER_TARGET,20000) > 0 ){
+                mTotalProgress = SPUtils.getInstance().getInt(ContentKey.USER_TARGET,20000);
+            }
+            mCurrentProgress = 0;
+            stepsView.setmTotalProgress(mTotalProgress);
+            new Thread(new ProgressRunable()).start();
+        }
     }
 
     private void updateUI(int step){
-        mNeedGoalTv.setText("距离你的目标还有"+(mTotalProgress - step)+"步");
+        if (mTotalProgress < step){
+            mNeedGoalTv.setText("已超过你的目标"+(step - mTotalProgress)+"步");
+        }else {
+            mNeedGoalTv.setText("距离你的目标还有"+(mTotalProgress - step)+"步");
+        }
         java.text.DecimalFormat   df   =new   java.text.DecimalFormat("#0.0");
         double km = step  * 0.7 / 1000;
         double calorie = CalorieTool.calculateCalorie(58,km,CalorieTool.K_WALKING);

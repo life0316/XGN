@@ -349,7 +349,6 @@ public class SetInfoActivity extends BaseActivity implements View.OnClickListene
             @Override
             public void onClick(View v) {
                 updateName = mEtDialog.getText().toString().trim();
-
                 if (updateName.equals("")){
                     ApiUtils.showToast(SetInfoActivity.this,"请输入内容");
                 }else {
