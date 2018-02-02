@@ -31,7 +31,7 @@ public class MethodConstant {
     /**
      * 3.6 获取用户信息
      */
-    public static final String USER_INFO_DETAIL = "/app/user/detail";
+    public static final String USER_INFO_DETAIL = "/app/user/get";
 
     /**
      * 3.7 上传图片

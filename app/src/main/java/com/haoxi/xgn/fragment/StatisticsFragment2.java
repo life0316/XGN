@@ -77,6 +77,7 @@ public class StatisticsFragment2 extends BaseLazyFragment implements IWeekDataVi
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         titleTv.setText("步数统计");
+        weekDataPresenter.getDataFromNets(getParaMap());
     }
 
     @Override
@@ -87,7 +88,6 @@ public class StatisticsFragment2 extends BaseLazyFragment implements IWeekDataVi
         SPUtils.getInstance().put(ContentKey.MAIN_PAGE,2);
         //填充各控件的数据
         Log.e("jiazai","预加载----ProfileFragment-------1");
-        weekDataPresenter.getDataFromNets(getParaMap());
 
 //        eachList.add(new HistoryBean(300,"1月1日"));
 //        eachList.add(new HistoryBean(500,"1月2日"));
@@ -96,7 +96,6 @@ public class StatisticsFragment2 extends BaseLazyFragment implements IWeekDataVi
 //        eachList.add(new HistoryBean(900,"1月5日"));
 //        eachList.add(new HistoryBean(0,"1月6日"));
 //        eachList.add(new HistoryBean(100,"1月7日"));
-//
 //        histroyView.setEachList(eachList);
 
     }
@@ -117,6 +116,7 @@ public class StatisticsFragment2 extends BaseLazyFragment implements IWeekDataVi
     @Override
     public void getDataSuccess(List<WeekShoesData> weekDataList) {
         Log.e("ooooooooo",weekDataList.size()+"-----size");
+        eachList.clear();
         weekTotalStep = 0;
         for (int i = 0; i < weekDataList.size(); i++) {
             WeekShoesData weekShoesData = weekDataList.get(i);

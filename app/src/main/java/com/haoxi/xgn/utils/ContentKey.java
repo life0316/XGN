@@ -5,6 +5,8 @@ public class ContentKey {
     public static final int PERMISSION_REQUESTCODE_1 = 100;
     public static final int PERMISSION_REQUESTCODE_2 = 200;
 
+    public static String IS_REGIST = "isRegist";
+
     public static String PHONE_KEY = "user_phone";
     public static String PWD_KEY = "user_pwd";
     public static String USER_TOKEN = "user_token";

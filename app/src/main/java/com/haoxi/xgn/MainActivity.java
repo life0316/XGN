@@ -10,24 +10,37 @@ import android.widget.TextView;
 import com.blankj.utilcode.util.SPUtils;
 import com.haoxi.xgn.base.BaseActivity;
 import com.haoxi.xgn.base.MyBaseAdapter;
+import com.haoxi.xgn.bean.EaseDataBean;
+import com.haoxi.xgn.bean.UserInfoData;
 import com.haoxi.xgn.fragment.ProfileFragment;
 import com.haoxi.xgn.fragment.StatisticsFragment;
 import com.haoxi.xgn.fragment.StatisticsFragment2;
 import com.haoxi.xgn.fragment.StepsFragment;
+import com.haoxi.xgn.model.mvp.ILoginView;
+import com.haoxi.xgn.model.mvp.LoginModel;
+import com.haoxi.xgn.model.mvp.LoginPresenter;
+import com.haoxi.xgn.net.MethodConstant;
+import com.haoxi.xgn.net.MethodParams;
 import com.haoxi.xgn.utils.ActivityFragmentInject;
+import com.haoxi.xgn.utils.ApiUtils;
 import com.haoxi.xgn.utils.BeepManager;
 import com.haoxi.xgn.utils.ContentKey;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Map;
 
 import butterknife.BindView;
 
 @ActivityFragmentInject(contentViewId = R.layout.activity_main)
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements ILoginView {
     @BindView(R.id.viewpager)
     ViewPager mViewPager;
     @BindView(R.id.navigation)
     BottomNavigationView navigation;
 
     private MenuItem menuItem;
+    private LoginPresenter presenter;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -57,6 +70,10 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void init() {
+
+        presenter = new LoginPresenter(new LoginModel());
+        presenter.attachView(this);
+
         SPUtils.getInstance().put(ContentKey.MAIN_PAGE,1);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.navigation_dashboard);
@@ -87,6 +104,10 @@ public class MainActivity extends BaseActivity {
             public void onPageScrollStateChanged(int state) {
             }
         });
+
+        if (SPUtils.getInstance().getBoolean(ContentKey.IS_REGIST,false)){
+            presenter.getDataFromNets(getParaMap());
+        }
     }
 
     @Override
@@ -111,5 +132,32 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
+    }
+
+    @Override
+    public String getMethod() {
+        return MethodConstant.USER_INFO_DETAIL;
+    }
+    @Override
+    protected Map<String, String> getParaMap() {
+        Map<String,String> map = super.getParaMap();
+        map.put(MethodParams.PARAMS_TOKEN,mToken);
+        map.put(MethodParams.PARAMS_USERID,mUserObjId);
+        return map;
+    }
+
+    @Override
+    public void toGetDetail(EaseDataBean user) {
+        SPUtils.getInstance().put(ContentKey.IS_REGIST,false);
+        UserInfoData infoData = user.getData();
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        if (infoData.getBirthday().equals("")) infoData.setBirthday(sdf.format(date));
+        ApiUtils.sp(infoData);
+    }
+
+    @Override
+    public void loginFail(String msg) {
+
     }
 }

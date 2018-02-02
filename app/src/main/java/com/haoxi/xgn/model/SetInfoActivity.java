@@ -388,6 +388,7 @@ public class SetInfoActivity extends BaseActivity implements View.OnClickListene
 
     @Override
     public void registSuccess(RegistBean registBean) {
+        SPUtils.getInstance().put(ContentKey.IS_REGIST,true);
         SPUtils.getInstance().put(ContentKey.PHONE_KEY,mPhoneStr);
         SPUtils.getInstance().put(ContentKey.PWD_KEY,mPasswordStr);
         SPUtils.getInstance().put(ContentKey.USER_OBJ_ID,registBean.getData().getUserid());
